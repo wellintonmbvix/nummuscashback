@@ -240,7 +240,10 @@ begin
                     end;
                   1:
                     begin
-                      oJson.AddPair('document_number', TJSONString.Create(sLista[6]));
+                      if Not sLista[6].Trim().IsEmpty then
+                        oJson.AddPair('document_number', TJSONString.Create(sLista[6]));
+                      if Not sLista[3].Trim().IsEmpty then
+                        oJson.AddPair('phone', TJSONString.Create(sLista[3]));
                     end;
                   4:
                     begin
@@ -390,25 +393,45 @@ begin
               1:  // Informações do cliente
                 begin
                   oCustomer.AddPair('name', TJSONString.Create(sLista[1]));
-                  oCustomer.AddPair('email', TJSONString.Create(sLista[2]));
-                  oCustomer.AddPair('phone', TJSONString.Create(sLista[3]));
-                  oCustomer.AddPair('birth_date', 
-                    TJSONString.Create(FormatDateTime('YYYY-mm-dd', 
-                      StrToDate(sLista[4]))));
-                  oCustomer.AddPair('gender', TJSONString.Create(sLista[5]));
-                  oCustomer.AddPair('document_number', 
-                    TJSONString.Create(sLista[6]));
+
+                  if Not sLista[2].Trim().IsEmpty then
+                    oCustomer.AddPair('email', TJSONString.Create(sLista[2]));
+
+                  if Not sLista[3].Trim().IsEmpty then
+                    oCustomer.AddPair('phone', TJSONString.Create(sLista[3]));
+
+                  if Not sLista[4].Trim().IsEmpty then
+                    oCustomer.AddPair('birth_date',
+                      TJSONString.Create(FormatDateTime('YYYY-mm-dd',
+                        StrToDate(sLista[4]))));
+
+                  if Not sLista[5].Trim().IsEmpty then
+                    oCustomer.AddPair('gender', TJSONString.Create(sLista[5]));
+
+                  if Not sLista[6].Trim().IsEmpty then
+                    oCustomer.AddPair('document_number',
+                      TJSONString.Create(sLista[6]));
                 end;
               2:  // Informações do(a) vendedor(a)
                 begin
                   oSeller.AddPair('name', TJSONString.Create(sLista[1]));
-                  oSeller.AddPair('email', TJSONString.Create(sLista[2]));
-                  oSeller.AddPair('document_number', TJSONString.Create(sLista[3]));
-                  oSeller.AddPair('phone', TJSONString.Create(sLista[4]));
-                  oSeller.AddPair('birth_date', 
-                    TJSONString.Create(FormatDateTime('YYYY-mm-dd', 
-                      StrToDate(sLista[5]))));
-                  oSeller.AddPair('gender', TJSONString.Create(sLista[6]));
+
+                  if Not sLista[2].Trim().IsEmpty then
+                    oSeller.AddPair('email', TJSONString.Create(sLista[2]));
+
+                  if Not sLista[3].Trim().IsEmpty then
+                    oSeller.AddPair('document_number', TJSONString.Create(sLista[3]));
+
+                  if Not sLista[4].Trim().IsEmpty then
+                    oSeller.AddPair('phone', TJSONString.Create(sLista[4]));
+
+                  if Not sLista[5].Trim().IsEmpty then
+                    oSeller.AddPair('birth_date',
+                      TJSONString.Create(FormatDateTime('YYYY-mm-dd',
+                        StrToDate(sLista[5]))));
+
+                  if Not sLista[6].Trim().IsEmpty then
+                    oSeller.AddPair('gender', TJSONString.Create(sLista[6]));
                 end;
               3:  // Informações do(s) produto(s)
                 begin
